@@ -78,8 +78,8 @@ jQuery().ready( function () {
           'osteuropa': 'Eastern Europe'
         },
         'de': {
-          'balt': 'Baltische Länder',
-          'nord': 'Nordische Länder',
+          'balt': 'Baltikum',
+          'nord': 'Nordeuropa',
           'ostsee': 'Ostseeraum',
           'osteuropa': 'Osteuropa'
         }
