@@ -34,27 +34,27 @@ jQuery().ready( function () {
       'facet': {
         'en': {
           'gbv-library': 'GBV Library',
-          'se-kb-collection': 'KB Sweden Collection',
+          'se-kb-collection': 'NB Sweden Collection',
           'region': 'Region'
         },
         'de': {
           'gbv-library': 'GBV Bibliothek',
-          'se-kb-collection': 'KB Schweden Sammlung',
+          'se-kb-collection': 'NB Schweden Sammlung',
           'region': 'Region'
         }
       },
       'facet-se-kb-collection': {
         'en': {
           'NB': 'Nationalbibliografin',
-          'COL': 'Svensk bibliografi 1600-talet (Collijn)',
-          'SB17': 'Svensk bibliografi 1700-1829',
+          'COL': 'Bibliografi 1600-talet (Collijn)',
+          'SB17': 'Bibliografi 1700-1829',
           'SOT': 'Swedish Public Print -1833',
-          'SHB': 'Svensk historisk bibliografi (1977-)',
-          'SLB': 'Svensk litteraturvetenskaplig bibliografi (1993-ca. 2000)',
-          'BIRB': 'Birgittabibliografin (ca. 1890 - ca. 2001)',
+          'SHB': 'Historisk bibliografi',
+          'SLB': 'Litteraturvetenskaplig bibliografi',
+          'BIRB': 'Birgittabibliografin',
           'BULB': 'BULB - Barn- och ungdomslitteraturbibliografin',
-          'KVIN': 'KVINNSAM - kvinno-, mans- och genusforskning',
-          'SAMB': 'Svensk samisk bibliografi',
+          'KVIN': 'KVINNSAM - Kvinno-, mans- och genusforskning',
+          'SAMB': 'Samisk bibliografi',
           'SWAM': 'Svenskamerikansk bibliografi',
           'NLT': 'Nya Lundstedt - Tidskrifter',
           'LOB': 'Bohusbibliografien',
@@ -62,9 +62,9 @@ jQuery().ready( function () {
           'GOTL': 'Gothlandica',
           'OSGO': 'Småland, Öland, Blekinge',
           'SAH': 'Sueica Antiqua et Hodierna',
-          'SARB': 'Svensk arkivbibliografi',
-          'SFBB': 'Svensk folkbildningsbibliografi',
-          'SNUB': 'Svensk Numismatisk Bibliografi',
+          'SARB': 'Arkivbibliografi',
+          'SFBB': 'Folkbildningsbibliografi',
+          'SNUB': 'Numismatisk Bibliografi',
           'VSTM': 'Västmanlandsbibliografi',
           'VIMO': 'Vilhelm Mobergs Bibliografi',
           'LITT': 'Litteraturbanken'
