@@ -70,19 +70,30 @@ plugin.tx_pazpar2.settings {
 }
 
 
-# Suche »Standard« (16)
-[globalVar = TSFE:id = 16]
-<INCLUDE_TYPOSCRIPT:source="FILE: fileadmin/pazpar2/pazpar2-conf-standard.ts">
-[global]
+
+# Name des pazpar2 Service aufbauen:
+# vifanord[-suchart][-region]
+plugin.tx_pazpar2.settings.flexformOverride.serviceID = vifanord
+
 # Suche »Thematisch« (15)
 [globalVar = TSFE:id = 15]
-<INCLUDE_TYPOSCRIPT:source="FILE: fileadmin/pazpar2/pazpar2-conf-thematisch.ts">
+plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-themen)
 [global]
 # Suche »Geographisch« (25)
 [globalVar = TSFE:id = 25]
-<INCLUDE_TYPOSCRIPT:source="FILE: fileadmin/pazpar2/pazpar2-conf-geo.ts">
+plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-geo)
 [global]
 # Suche »Internetquellen« (33)
 [globalVar = TSFE:id = 33]
-<INCLUDE_TYPOSCRIPT:source="FILE: fileadmin/pazpar2/pazpar2-conf-ir.ts">
+plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-ir)
+[global]
+
+
+[globalVar = GP:region = Baltikum]
+plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-balt)
+plugin.tx_pazpar2.settings.termLists.region >
+[global]
+[globalVar = GP:region = Skandinavien]
+plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-nord)
+plugin.tx_pazpar2.settings.termLists.region >
 [global]
