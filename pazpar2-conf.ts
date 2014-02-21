@@ -49,10 +49,6 @@ plugin.tx_pazpar2.settings {
 			maxFetch = 1000
 			minDisplay = 5
 		}
-		subject {
-			maxFetch = 6
-			minDisplay = 1
-		}
 	}
 	
 	exportFormats {
