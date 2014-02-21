@@ -180,9 +180,13 @@
   display: none; 
 }
 
-.pz2-term-selected-xtargets-kb-schweden .pz2-termList-se-kb-collection,
+.pz2-term-selected-xtargets-KB-Schweden .pz2-termList-se-kb-collection,
 .pz2-term-selected-xtargets-Artikel-Baltikum--Nord--und-Osteuropa .pz2-termList-gbv-library,
-.pz2-term-selected-xtargets-Fachkatalog-vifanord .pz2-termList-gbv-library{
+.pz2-term-selected-xtargets-Artikel-Baltikum .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-Artikel-Baltikum--Nord--und-Osteuropa .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-Fachkatalog-vifanord .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-Fachkatalog-Baltikum .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-Fachkatalog-Nordeuropa .pz2-termList-gbv-library {
   display: block;
 }
 
