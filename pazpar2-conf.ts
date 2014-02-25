@@ -57,12 +57,13 @@ plugin.tx_pazpar2.settings {
 	}
 	
 	showKVKLink = 1
+	showOpenURLLink = 1
 	
 	addHistoryLink = 1
 	useClipboard = 1
 	addClipboardLink = 1
 	
-	removeDiacriticsBeforeSearch = 1
+	highlightSearchTerms = 1
 }
 
 

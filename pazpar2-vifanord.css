@@ -121,6 +121,11 @@
 	color: #069;
 }
 
+#pazpar2 .pz2-termHighlight {
+	color: inherit;
+	background: #ddf0ff;
+}
+
 
 
 /*
@@ -216,4 +221,11 @@
 
 #pazpar2 #pz2-searchHistory h5 {
 	margin: 0 0 1em 0;
+}
+
+
+#pazpar2.pz2-historyVisible .pz2-historyLink,
+#pazpar2.pz2-clipboardVisible .pz2-clipboardLink {
+	background: #ddf0ff;
+	color: inherit;
 }

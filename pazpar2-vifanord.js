@@ -31,6 +31,14 @@ jQuery().ready( function () {
           'region': 'Region'
         }
       },
+      'facet-medium': {
+        'en': {
+          'electronic': 'Full text'
+        },
+        'de': {
+          'electronic': 'Volltext'
+        }
+      },
       'facet-se-kb-collection': {
         'en': {
           'NB': 'Nationalbibliografin',
