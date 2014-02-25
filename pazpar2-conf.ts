@@ -4,7 +4,7 @@
 # für die jeweiligen Seiten
 #
 # Einbindung in die relevanten Seiten durch folgendes in root.t3s:
-# [globalVar = TSFE:id = 16, TSFE:id = 15, TSFE:id = 25, TSFE:id = 33]
+# [globalVar = TSFE:id = 16, TSFE:id = 125, TSFE:id = 126, TSFE:id = 70]
 # <INCLUDE_TYPOSCRIPT:source="FILE:fileadmin/pazpar2/pazpar2-conf.ts">
 # [globalVar]
 #
@@ -71,16 +71,16 @@ plugin.tx_pazpar2.settings {
 # vifanord[-suchart][-region]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID = vifanord
 
-# Suche »Thematisch« (15)
-[globalVar = TSFE:id = 15]
+# Suche »Thematisch« (125)
+[globalVar = TSFE:id = 125]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-themen)
 [global]
-# Suche »Geographisch« (25)
-[globalVar = TSFE:id = 25]
+# Suche »Geographisch« (126)
+[globalVar = TSFE:id = 126]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-geo)
 [global]
-# Suche »Internetquellen« (33)
-[globalVar = TSFE:id = 33]
+# Suche »Internetquellen / Standard« (70)
+[globalVar = TSFE:id = 70]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-ir)
 [global]
 
