@@ -136,6 +136,10 @@
 }
 
 #pazpar2 .pz2-termList {
+	margin-bottom: 0;
+}
+
+#pazpar2 .pz2-termList ol {
 	margin-bottom: 1.5em;
 }
 
