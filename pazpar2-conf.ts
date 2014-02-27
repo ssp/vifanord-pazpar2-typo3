@@ -16,9 +16,10 @@ page.includeCSS.pazpar2-vifanord = fileadmin/pazpar2/pazpar2-vifanord.css
 
 
 plugin.tx_pazpar2.settings {
+	useKeywords = 1
+	
+	
 	termLists >
-	
-	
 	termLists {
 		region {
 			maxFetch = 5
