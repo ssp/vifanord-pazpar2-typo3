@@ -193,13 +193,15 @@
 	display: none; 
 }
 
-.pz2-term-selected-xtargets-NB-Schweden .pz2-termList-se-kb-collection,
-.pz2-term-selected-xtargets-Aufsätze-Baltikum--Nord--und-Osteuropa .pz2-termList-gbv-library,
-.pz2-term-selected-xtargets-Aufsätze-Baltikum .pz2-termList-gbv-library,
-.pz2-term-selected-xtargets-Aufsätze-Nordeuropa .pz2-termList-gbv-library,
-.pz2-term-selected-xtargets-Fachkatalog-vifanord .pz2-termList-gbv-library,
-.pz2-term-selected-xtargets-Fachkatalog-Baltikum .pz2-termList-gbv-library,
-.pz2-term-selected-xtargets-Fachkatalog-Nordeuropa .pz2-termList-gbv-library {
+.pz2-term-selected-xtargets-se-kb-libris-vifanord .pz2-termList-se-kb-collection,
+.pz2-term-selected-xtargets-sru-gbv-de-fachopac-vifanord .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-sru-gbv-de-fachopac-vifanord-balt .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-sru-gbv-de-fachopac-vifanord-nord .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-sru-gbv-de-olc-vifanord .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-sru-gbv-de-olc-vifanord-balt .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-sru-gbv-de-olc-vifanord-nord .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-sru-gbv-de-olcssg-oeu .pz2-termList-gbv-library,
+.pz2-term-selected-xtargets-sru-gbv-de-gvk-stabikat .pz2-termList-gbv-library {
 	display: block;
 }
 
