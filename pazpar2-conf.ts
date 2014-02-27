@@ -68,6 +68,23 @@ plugin.tx_pazpar2.settings {
 
 
 
+# Von TYPO3 im Formular genutzte Strings konfigurieren.
+plugin.tx_pazpar2 {
+	_LOCAL_LANG {
+		# Hack! TYPO3 seems unable to recognise the 'en' language code
+		default {
+			form-main-placeholder = e.g. Lithuania or Swed?
+			form-extended-placeholder-person = e.g. Ibsen, Henrik
+		}
+		de {
+			form-main-placeholder = z.B. Litauen oder Schwed?
+			form-extended-placeholder-person = z.B. Ibsen, Henrik
+		}
+	}
+}
+
+
+
 # Name des pazpar2 Service aufbauen:
 # vifanord[-suchart][-region]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID = vifanord
