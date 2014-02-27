@@ -18,7 +18,6 @@ page.includeCSS.pazpar2-vifanord = fileadmin/pazpar2/pazpar2-vifanord.css
 plugin.tx_pazpar2.settings {
 	termLists >
 	
-	serviceID = baltikum
 	
 	termLists {
 		region {
