@@ -18,6 +18,7 @@ page.includeCSS.pazpar2-vifanord = fileadmin/pazpar2/pazpar2-vifanord.css
 plugin.tx_pazpar2.settings {
 	useKeywords = 1
 	
+	usePazpar2Facets = 1
 	
 	termLists >
 	termLists {
@@ -45,7 +46,7 @@ plugin.tx_pazpar2.settings {
 			maxFetch = 5
 			minDisplay = 1
 		}
-		filterDate {
+		date {
 			maxFetch = 1000
 			minDisplay = 5
 		}
