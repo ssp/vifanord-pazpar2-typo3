@@ -42,17 +42,18 @@
 	margin-right: 214px;
 }
 
-#pazpar2 #pz2-recordView {
-	padding-top: 0;
-}
-
 #pazpar2 .pz2-pager.pz2-top {
 	padding-top: 0;
 }
 
-#pazpar2 .pz2-prev,
-#pazpar2 .pz2-next {
+#pazpar2 .pz2-top .pz2-prev,
+#pazpar2 .pz2-top .pz2-next {
 	top: 0.45em;
+}
+
+#pazpar2 .pz2-bottom .pz2-prev,
+#pazpar2 .pz2-bottom .pz2-next {
+	top: 0.5em;
 }
 
 #pazpar2 .pz2-progressIndicator {
