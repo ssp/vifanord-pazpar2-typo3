@@ -92,15 +92,23 @@ plugin.tx_pazpar2.settings.flexformOverride.serviceID = vifanord
 
 # Suche »Thematisch« (125)
 [globalVar = TSFE:id = 125]
-plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-themen)
+plugin.tx_pazpar2.settings {
+	flexformOverride.serviceID := appendString(-themen)
+	highlightSearchTerms = 0
+}
 [global]
 # Suche »Geographisch« (126)
 [globalVar = TSFE:id = 126]
-plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-geo)
+plugin.tx_pazpar2.settings {
+	flexformOverride.serviceID := appendString(-geo)
+	highlightSearchTerms = 0
+}
 [global]
 # Suche »Internetquellen / Standard« (70)
 [globalVar = TSFE:id = 70]
-plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-ir)
+plugin.tx_pazpar2.settings {
+	flexformOverride.serviceID := appendString(-ir)
+}
 [global]
 
 
