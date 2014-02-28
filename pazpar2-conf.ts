@@ -109,7 +109,7 @@ plugin.tx_pazpar2.settings {
 plugin.tx_pazpar2.settings {
 	flexformOverride.serviceID := appendString(-ir)
 }
-page.cssInline (
+page.CSS_inlineStyle (
 	#pazpar2 .pz2-featureLinks {
 		top: -54px;
 		right: 215px;
