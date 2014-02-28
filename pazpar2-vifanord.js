@@ -58,14 +58,15 @@ jQuery().ready( function () {
 				'dk-kb/KGL01_DAPF': 'Dansk Periodikafortegnelse',
 				'se-kb/libris-vifanord': 'NB Sweden LIBRIS',
 				'no-bibsys/NBO': 'NB Norway BIBSYS',
-				'fi-helka': 'Helka',
+				'fi-helka': 'Helsinki Verbundkatalog',
 				'dk-sdu/BONIS': 'BONIS',
 				'ee-ester/tallinn': 'NB Estonia',
 				'ee-ester/tartu': 'UB Tartu',
 				'lt-libis/KNYGOS': 'NB Lithuania',
 				'hu-berlin/TB_SKANDINAVISTIK': 'HU Berlin Scandinavian Studies',
 				'hebis/hebis-herder': 'Herder-Institute Catalogue',
-				'herder-institut/litdok': 'Herder-Institute Litdok'
+				'herder-institut/litdok': 'Herder-Institute Litdok',
+				'bsb/sisis-ost': 'BSB Osteuropasammlung'
 			},
 			'de': {
 				'vifanord-zsql/irall': 'Internetquellen vifanord',
@@ -93,14 +94,15 @@ jQuery().ready( function () {
 				'dk-kb/KGL01_DAPF': 'Dansk Periodikafortegnelse',
 				'se-kb/libris-vifanord': 'NB Schweden LIBRIS',
 				'no-bibsys/NBO': 'NB Norwegen BIBSYS',
-				'fi-helka': 'Helka',
+				'fi-helka': 'Helsinki Union Catalogue',
 				'dk-sdu/BONIS': 'BONIS',
 				'ee-ester/tallinn': 'NB Estland',
 				'ee-ester/tartu': 'UB Tartu',
 				'lt-libis/KNYGOS': 'NB Litauen',
 				'hu-berlin/TB_SKANDINAVISTIK': 'HU Berlin Skandinavistik',
 				'hebis/hebis-herder': 'Herder-Institut Katalog',
-				'herder-institut/litdok': 'Herder-Institut Litdok'
+				'herder-institut/litdok': 'Herder-Institut Litdok',
+				'bsb/sisis-ost': 'BSB Eastern European Collection'
 			}
 		},
 		'facet-medium': {
