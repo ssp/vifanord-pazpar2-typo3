@@ -86,6 +86,16 @@ plugin.tx_pazpar2 {
 
 
 
+# JavaScript für Eingabehilfe ausführen
+includeLibs.t3jquery = EXT:t3jquery/class.tx_t3jquery.php
+page.eingabehilfe = USER
+page.eingabehilfe {
+	userFunc = tx_t3jquery->addJS
+	jsdata = jQuery.ready( function() { addEingabehilfe('ÆæÅåØøþð'); } );
+	jsinline = 1
+}
+
+
 # Name des pazpar2 Service aufbauen:
 # vifanord[-suchart][-region]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID = vifanord
@@ -96,14 +106,18 @@ plugin.tx_pazpar2.settings {
 	flexformOverride.serviceID := appendString(-themen)
 	highlightSearchTerms = 0
 }
+page.eingabehilfe >
 [global]
+
 # Suche »Geographisch« (126)
 [globalVar = TSFE:id = 126]
 plugin.tx_pazpar2.settings {
 	flexformOverride.serviceID := appendString(-geo)
 	highlightSearchTerms = 0
 }
+page.eingabehilfe >
 [global]
+
 # Suche »Internetquellen / Standard« (70)
 [globalVar = TSFE:id = 70]
 plugin.tx_pazpar2.settings {
@@ -121,6 +135,7 @@ page.CSS_inlineStyle (
 [globalVar = GP:region = Baltikum]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-balt)
 plugin.tx_pazpar2.settings.termLists.region >
+page.eingabehilfe >
 [global]
 [globalVar = GP:region = Skandinavien]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-nord)

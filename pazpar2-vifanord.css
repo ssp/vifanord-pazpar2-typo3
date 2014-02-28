@@ -239,3 +239,31 @@
 	background: #ddf0ff;
 	color: inherit;
 }
+
+
+/*
+	Eingabehilfe
+*/
+.Eingabehilfe {
+	position: absolute;
+	top: 10px;
+	right: 16px;
+}
+
+.Eingabehilfe h4 {
+	display: inline;
+	margin: 0;
+	padding: 0;
+	background: transparent;
+	font-weight: normal;
+}
+
+.Eingabehilfe ul {
+	list-style-type: none;
+	display: inline;
+}
+
+.Eingabehilfe ul li {
+	display: inline;
+	padding: 0 2px;
+}

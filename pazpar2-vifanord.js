@@ -153,6 +153,61 @@ jQuery().ready( function () {
 				'ostsee': 'Ostseeraum',
 				'osteuropa': 'Osteuropa'
 			}
+		},
+		'general': {
+			'en': {
+				'Einfügen': 'Insert',
+			},
+			'de': {
+				'Einfügen': 'Einfügen'
+			}
 		}
 	}); // Ende jQuery.extend()
 }); // Ende jQuery.ready()
+
+
+var focusedField;
+//'ÆæÅåØøþð'
+function addEingabehilfe (lettersString) {
+	var div = document.createElement('div');
+	div.setAttribute('class', 'Eingabehilfe');
+
+	var h4 = document.createElement('h4');
+	div.appendChild(h4);
+	h4.appendChild(document.createTextNode(pz2client.localise('Einfügen')));
+	h4.appendChild(document.createTextNode(':'));
+
+	div.appendChild(document.createTextNode(' '));
+
+	var ul = document.createElement('ul');
+	div.appendChild(ul);
+	var letters = lettersString.split('');
+	for (var letterIndex in letters) {
+		var li = document.createElement('li');
+		ul.appendChild(li);
+		var a = document.createElement('a');
+		li.appendChild(a);
+		a.setAttribute('href', '#');
+		a.appendChild(document.createTextNode(letters[letterIndex]));
+	}
+	
+	jQuery('#pazpar2').prepend(div);
+	
+	// Click handling
+	jQuery(ul).on('click', 'a', function () {
+		var letter = jQuery(this).text();
+		if (focusedField) {
+			focusedField.value =
+				focusedField.value.substr(0, focusedField.selectionStart) +
+				letter +
+				focusedField.value.substr(focusedField.selectionEnd);
+			focusedField.selectionStart = focusedField.selectionStart + 1;
+			focusedField.selectionEnd = focusedField.selectionStart + 1;
+		}
+	});
+	
+	// Aktives Feld verfolgen
+	jQuery('.pz2-mainForm').on('focus', 'input:text', function () {
+		focusedField = this;
+	})
+}
