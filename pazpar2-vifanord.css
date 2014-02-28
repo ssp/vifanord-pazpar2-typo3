@@ -167,6 +167,9 @@
 #pazpar2 .pz2-termList-medium li a span.pz2-facetName {
 	line-height: 17px;
 }
+#pazpar2 .pz2-facetCount {
+	font-weight: normal;
+}
 
 #pazpar2 .pz2-activeFacet {
 	background: #fc0;
