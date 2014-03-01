@@ -107,6 +107,14 @@
 	list-style-type: circle;
 }
 
+#pazpar2 .pz2-detail-no-catalogueLink {
+	display: inline;
+}
+
+#pazpar2 .pz2-detail-no-catalogueLink:hover {
+	color: inherit;
+}
+
 #pazpar2 .pz2-ZDBInfo h5 {
 	margin: 0;
 	font-size: 100%;
