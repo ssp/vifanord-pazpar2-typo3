@@ -152,6 +152,10 @@
 	margin-bottom: 1.5em;
 }
 
+*:first-child+html #pazpar2 #pz2-results li .pz2-mediaIcon {
+	left: -25px;
+}
+
 #pazpar2 .pz2-termList h5 {
 	margin:0;
 }
@@ -175,6 +179,7 @@
 #pazpar2 .pz2-termList-medium li a span.pz2-facetName {
 	line-height: 17px;
 }
+
 #pazpar2 .pz2-facetCount {
 	font-weight: normal;
 }
