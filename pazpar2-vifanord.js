@@ -156,7 +156,7 @@ jQuery().ready( function () {
 		},
 		'general': {
 			'en': {
-				'Einfügen': 'Insert',
+				'Einfügen': 'Insert'
 			},
 			'de': {
 				'Einfügen': 'Einfügen'
