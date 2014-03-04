@@ -197,6 +197,18 @@
 	font-weight: normal;
 }
 
+#pazpar2 #pz2-results .pz2-exportItem:before {
+	content: 'Export: ';
+}
+
+#pazpar2 #pz2-results .pz2-exportItem:last-child:before {
+	content: initial;
+}
+
+#pazpar2 #pz2-results .pz2-exportItem:last-child {
+	margin-left: 0;
+}
+
 
 
 /*
