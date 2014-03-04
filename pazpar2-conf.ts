@@ -47,7 +47,7 @@ plugin.tx_pazpar2.settings {
 			minDisplay = 1
 		}
 		date {
-			maxFetch = 1000
+			maxFetch = 6
 			minDisplay = 5
 		}
 	}
