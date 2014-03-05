@@ -218,6 +218,6 @@ jQuery().ready( function () {
 	var region = jQuery('body').data('region');
 	var eingabehilfe = jQuery('body').data('eingabehilfe');
 	if ((region === 'all' || region === 'nord') && (eingabehilfe == 'ja')) {
-		addEingabehilfe();
+		addEingabehilfe('ÆæÅåØøþð');
 	}
 }); // Ende jQuery.ready()
