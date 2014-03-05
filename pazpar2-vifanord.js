@@ -216,8 +216,8 @@ jQuery().ready( function () {
 	 * und region: all, skandinavien
 	 */
 	var region = jQuery('body').data('region');
-	var suchtyp = jQuery('body').data('suchtyp');
-	if ((region === 'all' || region === 'nord') && (suchtyp === 'standard' || suchtyp === 'ir')) {
+	var eingabehilfe = jQuery('body').data('eingabehilfe');
+	if ((region === 'all' || region === 'nord') && (eingabehilfe == 'ja')) {
 		addEingabehilfe();
 	}
 }); // Ende jQuery.ready()
