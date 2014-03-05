@@ -79,6 +79,10 @@
 	color: #069;
 }
 
+#pazpar2 .pz2-title-remainder {
+	font-weight: normal;
+}
+
 #pazpar2 .pz2-item-responsibility {
 	font-style: normal;
 }
