@@ -130,3 +130,10 @@ plugin.tx_pazpar2.settings.termLists.region >
 plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-nord)
 plugin.tx_pazpar2.settings.termLists.region >
 [global]
+
+
+# <link> Element für Suchplugin einfügen
+page.headerData {
+	9004 = TEXT
+	9004.value = <link rel="search" type="application/opensearchdescription+xml" title="vifanord" href="http://vifanord.de/?id=16&type=9004">
+}
