@@ -217,7 +217,7 @@ jQuery().ready( function () {
 	 */
 	var region = jQuery('body').data('region');
 	var eingabehilfe = jQuery('body').data('eingabehilfe');
-	if ((region === 'all' || region === 'nord') && (eingabehilfe == 'ja')) {
+	if ((region === 'all' || region === 'Skandinavien') && (eingabehilfe == 'ja')) {
 		addEingabehilfe('ÆæÅåØøþð');
 	}
 }); // Ende jQuery.ready()
