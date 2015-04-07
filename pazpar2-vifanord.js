@@ -68,13 +68,11 @@ jQuery().ready( function () {
 		'facet': {
 			'en': {
 				'gbv-library': 'GBV Library',
-				'se-kb-collection': 'NB Sweden Collection',
-				'region': 'Region'
+				'se-kb-collection': 'NB Sweden Collection'
 			},
 			'de': {
 				'gbv-library': 'GBV Bibliothek',
-				'se-kb-collection': 'NB Schweden Sammlung',
-				'region': 'Region'
+				'se-kb-collection': 'NB Schweden Sammlung'
 			}
 		},
 		'facet-xtargets': {
@@ -146,20 +144,6 @@ jQuery().ready( function () {
 				'VSTM': 'Västmanlandsbibliografi',
 				'VIMO': 'Vilhelm Mobergs Bibliografi',
 				'LITT': 'Litteraturbanken'
-			}
-		},
-		'facet-region': {
-			'en': {
-				'balt': 'Baltic Countries',
-				'nord': 'Nordic Countries',
-				'ostsee': 'Ostseeraum',
-				'osteuropa': 'Eastern Europe'
-			},
-			'de': {
-				'balt': 'Baltikum',
-				'nord': 'Nordeuropa',
-				'ostsee': 'Ostseeraum',
-				'osteuropa': 'Osteuropa'
 			}
 		},
 		'general': {
