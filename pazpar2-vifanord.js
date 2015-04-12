@@ -91,7 +91,8 @@ jQuery().ready( function () {
 				'dk-sdu/BONIS': 'BONIS',
 				'hu-berlin/TB_SKANDINAVISTIK': 'HU Berlin Scandinavian Studies',
 				'hebis/hebis-herder': 'Herder-Institute Catalogue',
-				'library.fes.de': 'Friedrich-Ebert-Stiftung'
+				'library.fes.de': 'Friedrich-Ebert-Stiftung',
+				'ssgfi/finnug': 'Internet Resources Finland, Estonia'
 			},
 			'de': {
 				'sru.gbv.de/fachopac-vifanord-nord': 'Fachkatalog Nordeuropa',
@@ -108,7 +109,8 @@ jQuery().ready( function () {
 				'dk-sdu/BONIS': 'BONIS',
 				'hu-berlin/TB_SKANDINAVISTIK': 'HU Berlin Skandinavistik',
 				'hebis/hebis-herder': 'Herder-Institut Katalog',
-				'library.fes.de': 'Friedrich-Ebert-Stiftung'
+				'library.fes.de': 'Friedrich-Ebert-Stiftung',
+				'ssgfi/finnug': 'Internetquellen Finnland, Estland'
 			}
 		},
 		'facet-medium': {
