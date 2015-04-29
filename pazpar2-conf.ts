@@ -87,7 +87,7 @@ plugin.tx_pazpar2 {
 
 
 # Name des pazpar2 Service aufbauen:
-# vifanord[-suchart][-region]
+# vifanord[-suchart]
 plugin.tx_pazpar2.settings.flexformOverride.serviceID = vifanord
 
 # Suche »Thematisch« (125)
@@ -105,32 +105,6 @@ plugin.tx_pazpar2.settings {
 	highlightSearchTerms = 0
 }
 [global]
-
-# Suche »Internetquellen / Standard« (70)
-[globalVar = TSFE:id = 70]
-plugin.tx_pazpar2.settings {
-	flexformOverride.serviceID := appendString(-ir)
-}
-page.CSS_inlineStyle (
-	#pazpar2 .pz2-featureLinks {
-		top: -54px;
-		right: 215px;
-	}
-)
-[global]
-
-# Region Baltikum
-[globalVar = GP:region = Baltikum]
-plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-balt)
-plugin.tx_pazpar2.settings.termLists.region >
-[global]
-
-# Region Nordeuropa
-[globalVar = GP:region = Skandinavien]
-plugin.tx_pazpar2.settings.flexformOverride.serviceID := appendString(-nord)
-plugin.tx_pazpar2.settings.termLists.region >
-[global]
-
 
 # <link> Element für Suchplugin einfügen
 page.headerData {
