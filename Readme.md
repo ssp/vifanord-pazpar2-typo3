@@ -1,15 +1,15 @@
 # vifanord Konfiguration für pazpar2 TYPO3 Extension
 
-Auf dem Server unter `/var/www/typo/fileadmin/pazpar2`.
+Auf dem Server unter `public_html/fileadmin/pazpar2`.
 
 
 ## pazpar2-conf.ts
 
-TypoScript Konfiguration, die die pazpar2 Extension konfiguriert und die richtigen Services für die jeweiligen Seiten und Regionseinstellungen einstellt.
+TypoScript Konfiguration, die die pazpar2 Extension konfiguriert und die richtigen Services für die jeweilige Seite einstellt.
 
 Sie fügt außerdem die CSS und JavaScript Datei aus diesem Repository zu den Seiten hinzu.
 
-Die TypoScript Datei wird durch eine Zeile in `/var/www/typo3/fileadmin/Template/Private/Configuration/TypoScript/root.t3s` in die Konfiguration eingebunden.
+Die TypoScript Datei wird durch eine Zeile in `public_html/fileadmin/Template/Private/Configuration/TypoScript/root.t3s` in die Konfiguration eingebunden.
 
 
 
