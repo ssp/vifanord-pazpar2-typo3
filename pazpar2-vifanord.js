@@ -4,60 +4,69 @@
  * 2014-2015: Sven-S. Porst <ssp-web@earthlingsoft.net>
  */
 
-var focusedField;
-//'ÆæÅåØøþð'
-function addEingabehilfe (lettersString) {
-	var div = document.createElement('div');
-	div.setAttribute('class', 'Eingabehilfe');
 
-	var h4 = document.createElement('h4');
-	div.appendChild(h4);
-	h4.appendChild(document.createTextNode(pz2client.localise('Einfügen')));
-	h4.appendChild(document.createTextNode(':'));
+/**
+ * Eingabehilfe hinzufügen.
+ */
+jQuery(function () {
+	var focusedField;
 
-	div.appendChild(document.createTextNode(' '));
+	//'ÆæÅåØøþð'
+	var addEingabehilfe = function (lettersString) {
+		var div = document.createElement('div');
+		div.setAttribute('class', 'Eingabehilfe');
 
-	var ul = document.createElement('ul');
-	div.appendChild(ul);
-	var letters = lettersString.split('');
-	for (var letterIndex in letters) {
-		var li = document.createElement('li');
-		ul.appendChild(li);
-		var a = document.createElement('a');
-		li.appendChild(a);
-		a.setAttribute('href', '#');
-		a.appendChild(document.createTextNode(letters[letterIndex]));
-	}
-	
-	jQuery('#pazpar2').prepend(div);
-	
-	// Click handling
-	jQuery(ul).on('click', 'a', function () {
-		var letter = jQuery(this).text();
-		if (focusedField) {
-			focusedField.value =
-				focusedField.value.substr(0, focusedField.selectionStart) +
-				letter +
-				focusedField.value.substr(focusedField.selectionEnd);
-			focusedField.selectionStart = focusedField.selectionStart + 1;
-			focusedField.selectionEnd = focusedField.selectionStart + 1;
+		var h4 = document.createElement('h4');
+		div.appendChild(h4);
+		h4.appendChild(document.createTextNode(pz2client.localise('Einfügen')));
+		h4.appendChild(document.createTextNode(':'));
+
+		div.appendChild(document.createTextNode(' '));
+
+		var ul = document.createElement('ul');
+		div.appendChild(ul);
+		var letters = lettersString.split('');
+		for (var letterIndex in letters) {
+			var li = document.createElement('li');
+			ul.appendChild(li);
+			var a = document.createElement('a');
+			li.appendChild(a);
+			a.setAttribute('href', '#');
+			a.appendChild(document.createTextNode(letters[letterIndex]));
 		}
-	});
-	
-	// Aktives Feld verfolgen
-	jQuery('.pz2-mainForm').on('focus', 'input:text', function () {
-		focusedField = this;
-	})
-}
+
+		jQuery('.pazpar2').prepend(div);
+
+		// Click handling
+		jQuery(ul).on('click', 'a', function () {
+			var letter = jQuery(this).text();
+			if (focusedField) {
+				focusedField.value =
+					focusedField.value.substr(0, focusedField.selectionStart) +
+					letter +
+					focusedField.value.substr(focusedField.selectionEnd);
+				focusedField.selectionStart = focusedField.selectionStart + 1;
+				focusedField.selectionEnd = focusedField.selectionStart + 1;
+			}
+		});
+
+		// Aktives Feld verfolgen
+		jQuery('.pz2-mainForm').on('focus', 'input:text', function () {
+			focusedField = this;
+		});
+	};
+
+	if (jQuery('body').data('eingabehilfe') === 'ja') {
+		addEingabehilfe('ÆæÅåØøþð');
+	}
+});
 
 
 
 /**
  * Anpassungen von jQuery ausführen lassen, wenn das Dokument geladen ist.
- * Es ist wichtig, daß diese Datei _nach_ dem Script der pazpar2 Extension
- * eingebunden wird, damit das pz_client Objekt bereits vorhanden ist.
  */
-jQuery().ready( function () {
+jQuery(function () {
 	/**
 	 * pazpar2 Lokalisierungen anpassen.
 	 * Das Objekt pz2_client.prototype.localisations enthält die verschiedenen
@@ -157,15 +166,228 @@ jQuery().ready( function () {
 			}
 		}
 	}); // Ende jQuery.extend()
-	
-	/**
-	 * Eingabehilfe hinzufügen für:
-	 * suchtyp: standard, ir
-	 * und region: all, skandinavien
-	 */
-	var region = jQuery('body').data('region');
-	var eingabehilfe = jQuery('body').data('eingabehilfe');
-	if ((region === 'all' || region === 'Skandinavien') && (eingabehilfe == 'ja')) {
-		addEingabehilfe('ÆæÅåØøþð');
+
+});
+
+
+/*
+ * Abfragen für thematische Suche.
+ *
+ * Der folgende Abschnitt baut aus den Daten an den verschiedenen
+ * Formularelementen der thematischen Suche die Abfragen zusammen.
+ *
+ * Die Länderauswahl wird aus den markierten Checkboxen festgestellt, die
+ * Themenauswahl aus dem ausgewählten Menüpunkt des untersten Themenmenüs.
+ *
+ * In der Themenauswahl sind Informationen unter den Schlüsseln »kiel« und
+ * »goe« hinterlegt:
+ *
+ * Für Kiel eine Liste von Abfragen, die mit dem Präfix »8 «
+ * auf dem Index lsg verodert gestellt werden. Diese Abfragen werden zusätzlich
+ * mit einer Veroderung der Kieler Regionalabfragen verundet.
+ *
+ * Für Göttingen ein Objekt mit den Regionen als Schlüssel und den zugehörigen
+ * Abfragen als Werte.
+ */
+
+var kielRegionSearch = {
+	'fi': ['reg 25.3?'],
+	'se': ['reg 25.6?'],
+	'no': ['reg 25.5?'],
+	'dk': ['reg 25.2', 'reg 25.21?', 'reg 25.22?', 'reg 25.23?'],
+	'ic': ['reg 25.4?'],
+	'gro': ['reg 25.25?'],
+	'fae': ['reg 25.24?']
+};
+
+
+var createPazpar2Query = function (queries) {
+	var queryParts = [];
+
+	var regionsToSearch = jQuery('.pz2-neuerwerbungen input:checked')
+		.map(function() { return jQuery(this).val().replace('region=', ''); });
+
+	if (queries.goe) {
+		for (var region in kielRegionSearch) {
+			var query = queries.goe[region];
+			if (query) {
+				queryParts.push(query);
+			}
+		}
+		jQuery.map(regionsToSearch, function(region) { return queries ? queries[region] : null; });
 	}
-}); // Ende jQuery.ready()
+
+	var kqs = queries.kiel;
+	var kielQueriesToFilter = [];
+	for (var kqsi in kqs) {
+		var kielQuery = kqs[kqsi];
+		if (kielQuery.match(/^nor/g)) {
+			queryParts.push('lsg="8 ' + kielQuery + '"');
+		} else {
+			kielQueriesToFilter.push('lsg="8 ' + kielQuery + '")');
+		}
+	}
+	var regionQueries = [];
+	for (var regionIndex in regionsToSearch) {
+		var regionName = regionsToSearch[regionIndex];
+		for (var queryIndex in kielRegionSearch[regionName]) {
+			regionQueries.push('lsg="8 ' + kielRegionSearch[regionName][queryIndex] + '"');
+		}
+	}
+	if (kielQueriesToFilter.length > 0) {
+		queryParts.push('(' + kielQueriesToFilter.join(' or ') + ') and (' + regionQueries.join(' or ') + ')');
+	}
+
+	return queryParts.length > 0 ? '(' + queryParts.join(') or (') + ')' : '';
+}
+
+
+var selectedRegions = function (jForm) {
+	return jQuery('.pz2-neuerwerbungen input:checked').map(function() {
+		return jQuery(this).val().replace('region=', '');
+	}).toArray();
+};
+
+var selectedSubject = function () {
+	var queryJSON = jQuery('.gokContainer option[query]:selected').last().attr('query');
+	return queryJSON ? JSON.parse(queryJSON) : {};
+};
+
+var makeKielSubjectQuery = function (subjectQueries) {
+	var kielSubjectQuery = subjectQueries.kiel;
+	if (!kielSubjectQuery || kielSubjectQuery.length === 0) return '';
+	var result = {
+		withRegion:[],
+		withoutRegion:[]
+	};
+	for (var queryIndex in kielSubjectQuery) {
+		var kielQuery = kielSubjectQuery[queryIndex];
+		var queryString = 'lsg="8 ' + kielQuery + '"';
+		// Abfragen mit nor so übernehmen,
+		// alle anderen Abfragen müssen mit den Regionalabfragen kombiniert werden.
+		if (kielQuery.indexOf('nor') !== -1) {
+			result.withoutRegion.push(queryString);
+		}
+		else {
+			result.withRegion.push(queryString);
+		}
+	}
+
+	return result;
+}
+
+var makeKielRegionQuery = function (regions) {
+	var regionQueries = [];
+	for (var regionIndex in regions) {
+		var region = regions[regionIndex];
+		var regionQuery = kielRegionSearch[region];
+		if (regionQuery) {
+			jQuery.merge(regionQueries, regionQuery);
+		}
+	}
+	var finalRegionQueries = jQuery.map(regionQueries, function (value) {
+		return 'lsg="8 ' + value + '"';
+	});
+	return finalRegionQueries.length > 0
+		? '(' + finalRegionQueries.join(' or ') + ')'
+		: '';
+};
+
+var makeKielQueries = function (regions, subjectQueries) {
+	var subjectQuery = makeKielSubjectQuery(subjectQueries);
+	var queries = [];
+	if (subjectQuery.withRegion && subjectQuery.withRegion.length > 0) {
+		queries.push('((' + subjectQuery.withRegion.join(' or ') + ')'
+												+ ' and ' + makeKielRegionQuery(regions) + ')');
+	}
+	if (subjectQuery.withoutRegion && subjectQuery.withoutRegion.length > 0) {
+		queries.push('(' + subjectQuery.withoutRegion.join(' or ') + ')');
+	}
+	return queries;
+};
+
+var makeGoeQuery = function (regions, subjectQueries) {
+	var goeQueries = subjectQueries.goe;
+	if (goeQueries) {
+		var relevantGoeQueries = [];
+		for (var region in goeQueries) {
+			if (regions.indexOf(region) !== -1) {
+				relevantGoeQueries.push(jQuery.trim(goeQueries[region]).replace(/'/g, '"'));
+			}
+		}
+		if (relevantGoeQueries.length > 0) {
+			return ['(' + relevantGoeQueries.join(') or (') + ')'];
+		}
+	}
+	return [];
+};
+
+var queryForForm = function (jForm) {
+	var regions = selectedRegions();
+	var subjectQueries = selectedSubject();
+
+	var queries = makeKielQueries(regions, subjectQueries)
+									.concat(makeGoeQuery(regions, subjectQueries));
+
+	return queries.join(' or ');
+};
+
+var startVifanordSubjectSearch = function () {
+	var displayQuery = function (query) {
+		jQuery('#queryString').remove();
+		var container = document.createElement('div');
+		container.id = 'queryString';
+		container.appendChild(document.createTextNode('Abfrage: ' + query));
+		jQuery('.gokContainer').append(container);
+	};
+
+	if (pz2client.isReady()) {
+		var jForm = jQuery('.pz2-neuerwerbungenForm');
+		if (jForm.length > 0) {
+			var query = queryForForm(jForm);
+			if (jQuery.trim(query).length > 0) {
+				pz2client.currentView.query = query;
+				pz2client.currentView.recPerPage = 100;
+				pz2client.currentView.sort = 'date:0,author:1,title:1';
+				pz2client.search();
+				// TODO: wegmachen
+				displayQuery(query);
+			}
+		}
+	}
+	else {
+		pz2client.initialisePazpar2();
+	}
+};
+
+/**
+ * Funktion zum Starten der thematischen Suche.
+ */
+var nkwgokItemSelected = function (event) {
+	startVifanordSubjectSearch();
+};
+
+/**
+ * Anpassungen für die thematische Suche.
+ */
+jQuery(function () {
+	// Wir haben technische 2 pazpar2 Extensions in der Seite, eine nur pro-forma,
+	// da sie die Checkboxen für die Regionsauswahl erzeugt, eine für die
+	// eigentliche Suche. Den nicht-benötigten Suchergebnisteil entfernen, damit
+	// die Erebnisse an der richtigen Stelle erscheinen.
+	var jPz2neuerwerbungen = jQuery('.pz2-neuerwerbungen');
+	if (jPz2neuerwerbungen.length > 0) {
+		jPz2neuerwerbungen.find('.pz2-recordView').detach();
+
+		// Submit-Knopf entfernen, wir reagieren (nur) auf change Events der selects.
+		jPz2neuerwerbungen.find('.pz2-neuerwerbungenForm input[type="submit"]').hide();
+
+		restoreCookieState();
+		pz2client.config.triggerSearchFunction = startVifanordSubjectSearch;
+
+		// Standard Event-Handler für Checkboxen entfernen.
+		jQuery(document).off('click', '.pz2-neuerwerbungenForm input[type="checkbox"]');
+		// … dann eigenen Event-Handler hinzufügen.
+		jPz2neuerwerbungen.find('input').on('click', checkboxClicked);
+	}
+});

@@ -3,7 +3,7 @@
 # Konfiguriert die pazpar2 Extension und die pazpar2 Services
 # für die jeweiligen Seiten
 #
-# Einbindung in die relevanten Seiten durch folgendes in root.t3s:
+# Einbindung in die relevanten Seiten durch Folgendes in root.t3s:
 # [globalVar = TSFE:id = 16, TSFE:id = 125, TSFE:id = 126, TSFE:id = 70]
 # <INCLUDE_TYPOSCRIPT:source="FILE:fileadmin/pazpar2/pazpar2-conf.ts">
 # [globalVar]
@@ -17,9 +17,9 @@ page.includeCSS.pazpar2-vifanord = fileadmin/pazpar2/pazpar2-vifanord.css
 
 plugin.tx_pazpar2.settings {
 	useKeywords = 1
-	
+
 	usePazpar2Facets = 1
-	
+
 	termLists >
 	termLists {
 		region {
@@ -51,19 +51,19 @@ plugin.tx_pazpar2.settings {
 			minDisplay = 5
 		}
 	}
-	
+
 	exportFormats {
 		ris = 1
 		bibtex = 1
 	}
-	
+
 	showKVKLink = 1
 	showOpenURLLink = 1
-	
+
 	addHistoryLink = 1
 	useClipboard = 1
 	addClipboardLink = 1
-	
+
 	highlightSearchTerms = 1
 }
 
@@ -91,19 +91,29 @@ plugin.tx_pazpar2 {
 plugin.tx_pazpar2.settings.flexformOverride.serviceID = vifanord
 
 # Suche »Thematisch« (125)
-[globalVar = TSFE:id = 125]
+[globalVar = TSFE:id = 125, TSFE:id = 159]
 plugin.tx_pazpar2.settings {
 	flexformOverride.serviceID := appendString(-themen)
 	highlightSearchTerms = 0
+	showSearchForm = 0
+	useMaps = 0
+	useGoogleBooks = 0
+	addHistoryLink = 0
 }
-[global]
+plugin.tx_nkwgok_pi1.menuInlineThreshold = 3
 
-# Suche »Geographisch« (126)
-[globalVar = TSFE:id = 126]
-plugin.tx_pazpar2.settings {
-	flexformOverride.serviceID := appendString(-geo)
-	highlightSearchTerms = 0
+plugin.tx_pazpar2_pazpar2neuerwerbungen.settings {
+	neuerwerbungen-subjects = vn-geo
+	useAtomFeed = 0
+	numberOfMonths = 0
+	updateAndDisplay = 1
+	noHeaderContributions = 1
 }
+
+page.bodyTag >
+page.bodyTagCObject = TEXT
+page.bodyTagCObject.value = subjectSearch
+page.bodyTagCObject.wrap = <body class="|">
 [global]
 
 # <link> Element für Suchplugin einfügen
