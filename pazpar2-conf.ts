@@ -100,7 +100,7 @@ plugin.tx_pazpar2.settings {
 	useGoogleBooks = 0
 	addHistoryLink = 0
 }
-plugin.tx_nkwgok_pi1.menuInlineThreshold = 3
+plugin.tx_nkwgok_pi1.menuInlineThreshold = 2
 
 plugin.tx_pazpar2_pazpar2neuerwerbungen.settings {
 	neuerwerbungen-subjects = vn-geo
